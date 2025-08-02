@@ -4,10 +4,41 @@
  */
 package psymphony;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+
 /**
  *
  * @author Spiri
  */
 public class ConexionDao {
+    // Declaración de variables para la conexion a la base de datos
+    private static final String url ="jdbc:mysql://localhost:33065/dbsymphony";
+    private static final String username="root";
+    private static final String pass="";
+    
+    // conexion base de datos
+    public static Connection obtenerConexion(){
+        Connection conn = null;
+            try {
+                  Class.forName("com.mysql.cj.jdbc.Driver");
+                  conn = DriverManager.getConnection(url,username,pass);
+              } catch (Exception e) {
+                  System.out.println("Error: " + e.getMessage());
+              }
+
+              return conn;
+    }
+    public static void cerrarConexion(Connection Conn){
+        try{
+            if(Conn !=null){
+                Conn.close();
+            }
+        }catch(Exception e){
+        System.out.println("Error al conectarnos"+e.toString());
+
+        }
+    }
     
 }
