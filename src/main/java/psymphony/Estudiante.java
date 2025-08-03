@@ -9,17 +9,18 @@ package psymphony;
  * @author Spiri
  */
 public class Estudiante {
+    //declaramos las variables como private para proteger los datos y garantizar el principio de encapsulamiento
     private int id;
     private String nombreAlumno;
     private String apellidoAlumno;
     private String telefono;
     private String direccion;
-    private String correo;
+    private String email;
     private String Genero;
-    // constructor vacio
+    // constructor vacio de utilidad para cuando aun no tenemos los datos
     public Estudiante()
     {}
-    //constructor de estudiante
+    //constructor completo que nos permite crear un estudiante con todos sus datos de una sola vez.
     public Estudiante(int id,String nombreAlumno, String apellidoAlumno, String telefono,String direccion, String correo, String genero)
     {
      this.id=id;
@@ -27,10 +28,10 @@ public class Estudiante {
      this.apellidoAlumno=apellidoAlumno;
      this.telefono=telefono;
      this.direccion=direccion;
-     this.correo=correo;
+     this.email=email;
      this.Genero=genero;
     }
-
+    //creamos los metodos set y get de tipo publico los cuales nos permiten asignar y obtener el valor de atributos privados de clase estudiante
     public int getId() {
         return id;
     }
@@ -72,11 +73,11 @@ public class Estudiante {
     }
 
     public String getCorreo() {
-        return correo;
+        return email;
     }
 
     public void setCorreo(String correo) {
-        this.correo = correo;
+        this.email = email;
     }
 
     public String getGenero() {
@@ -94,7 +95,7 @@ public class Estudiante {
                ", apellidoAlumno='" + apellidoAlumno + '\'' +
                ", telefono=" + telefono +
                ", direccion='" + direccion + '\'' +
-               ", correo=" + correo +
+               ", correo=" + email +
                ", genero=" +Genero +
                '}';
     }
