@@ -16,19 +16,19 @@ import java.util.List;
  */
 public class EstudianteDao {
     // creamos una función la cual nos permite insertar nuevos registros de estudiante
-    public void InsertarEstudiante(String nombre, String apellido,String telefono, String direccion, String correo, String genero){
+    public void InsertarEstudiante(String nombre, String apellido,String telefono, String direccion, String email, String genero){
         Connection conn = null;
         PreparedStatement stmt = null;
         try{
            // consulta inserccion de registro en la base de datos
            conn = ConexionDao.obtenerConexion();
-           String sql = "INSERT INTO estudiantes(Nombre,Apellido,Telefono,Direccion,Correo,Genero) VALUES(?,?,?,?,?,?)";
+           String sql = "INSERT INTO estudiantes(Nombre,Apellido,Telefono,Direccion,Email,Genero) VALUES(?,?,?,?,?,?)";
            stmt = conn.prepareStatement(sql);
            stmt.setString(1, nombre);
            stmt.setString(2, apellido);
            stmt.setString(3, telefono);
            stmt.setString(4, direccion);
-           stmt.setString(5, correo);
+           stmt.setString(5, email);
            stmt.setString(6, genero);
            stmt.executeUpdate();
            
@@ -42,20 +42,20 @@ public class EstudianteDao {
         
     }
     // creamos una función tipo publica la cual nos permite actualizar los datos de los estudiantes
-    public void ActualizarEstudiante(int id, String nombre, String apellido, String telefono, String direccion, String correo, String genero){
+    public void ActualizarEstudiante(int id, String nombre, String apellido, String telefono, String direccion, String email, String genero){
      Connection conn = null;
      PreparedStatement stmt = null;
      try{
          // para conectarnos a nuestra base de datos con la función obtenerConexion
         conn = ConexionDao.obtenerConexion();
         // Realizamos la consulta a nuestra base de datos
-        String sql ="update estudiantes set Nombre =?,Apellido =?,Telefono=?,Direccion=?,Correo=?,Genero=? WHERE IdEstudiante=?";
+        String sql ="update estudiantes set Nombre =?,Apellido =?,Telefono=?,Direccion=?,Email=?,Genero=? WHERE IdEstudiante=?";
         stmt = conn.prepareStatement(sql);
         stmt.setString(1, nombre);
         stmt.setString(2, apellido);
         stmt.setString(3, telefono);
         stmt.setString(4, direccion);
-        stmt.setString(5, correo);
+        stmt.setString(5, email);
         stmt.setString(6, genero);
         stmt.setInt(7, id);
         stmt.executeUpdate();
@@ -67,7 +67,24 @@ public class EstudianteDao {
                    ConexionDao.cerrarConexion(conn);
                   }
     }
+}
+    /**
+    public void guardarEstudiantes(HttpsServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException{
+        String nombre = request.getParameter("nombre");
+        String apellido = request.getParameter("apellido");
+        String telefono = request.getParameter("telefono");
+        String direccion = request.getParameter("direccion");
+        String email = request.getParameter("email");
+        String genero = request.getParameter("genero");
+        EstudianteDao estudianteDao = new EstudianteDao ();
+        estudianteDao.InsertarEstudiante(nombre, apellido, telefono, direccion, email, genero);
+        //Redirigimos al JSP con mensaje de exito
+        response.sendRedirect("GuardarEstudiante.jsp?mensaje=Ok");
+    }*/
+    
     // Listar Estudiantes
+    /**
     public List<Estudiante> ListarEstudiantes(){
     List<Estudiante> estudiantes = new ArrayList<>();
     Connection conn= null;
@@ -85,7 +102,7 @@ public class EstudianteDao {
         student.setApellidoAlumno(rs.getString("apellido"));
         student.setTelefono(rs.getString("telefono"));
         student.setDireccion(rs.getString("direccion"));
-        student.setCorreo(rs.getString("correo"));
+        student.setEmail(rs.getString("email"));
         student.setGenero(rs.getString("genero"));
         estudiantes.add(student);
         }
@@ -98,6 +115,8 @@ public class EstudianteDao {
         return estudiantes;
         
     }
+    */
+    /**
 // Funcion para obtenerEstudiantesPorId el cual nos permite actualizar los datos de los estudiantes 
   public Estudiante obtenerEstudiantePorId(int id){
     Connection conn = null;
@@ -120,7 +139,7 @@ public class EstudianteDao {
             estudiante.setApellidoAlumno(rs.getString("Apellido"));
             estudiante.setTelefono(rs.getString("Telefono"));
             estudiante.setDireccion(rs.getString("Direccion"));
-            estudiante.setCorreo(rs.getString("Correo"));
+            estudiante.setEmail(rs.getString("Email"));
             estudiante.setGenero(rs.getString("Genero"));
         }
 
@@ -132,11 +151,11 @@ public class EstudianteDao {
     }
 
     return estudiante;
-}
+}*/
  /*
     Se crea una función para contar el numero de estudiantes e implementar en dashboard principal y muestre en una card el numerode estudiantes
   */
-  
+  /**
   public int contarEstudiantes(){
    int total = 0;
    Connection conn = null;
@@ -156,5 +175,5 @@ public class EstudianteDao {
      ConexionDao.cerrarConexion(conn);
    }
    return total;
-  }
-}
+  }*/
+
